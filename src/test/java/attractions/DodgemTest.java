@@ -2,6 +2,7 @@ package attractions;
 
 import org.junit.Before;
 import org.junit.Test;
+import people.Visitor;
 
 import static org.junit.Assert.assertEquals;
 
@@ -33,5 +34,17 @@ public class DodgemTest {
     @Test
     public void canGetDefaultPrice(){
         assertEquals(4.50, dodgems.defaultPrice(), 0.01);
+    }
+
+    @Test
+    public void canChargeChildrenUnder12HalfPrice(){
+        Visitor visitor = new Visitor(10, 0.6, 4.50);
+        assertEquals(2.25, dodgems.priceFor(visitor), 0.01);
+    }
+
+    @Test
+    public void canChargeVisitorsOver12DefaultPrice(){
+        Visitor visitor = new Visitor(113, 0.89, 4.50);
+        assertEquals(4.50, dodgems.priceFor(visitor), 0.01);
     }
 }
