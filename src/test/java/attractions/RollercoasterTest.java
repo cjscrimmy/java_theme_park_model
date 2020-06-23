@@ -35,4 +35,10 @@ public class RollercoasterTest {
         Visitor visitor = new Visitor(16, 1.6, 12.00);
         assertEquals(true, rollerCoaster.isAllowedTo(visitor));
     }
+
+    @Test
+    public void visitorCantRideRollercoaster(){
+        Visitor visitor = new Visitor(14, 1.2, 3.00);
+        assertEquals(false, rollerCoaster.isAllowedTo(visitor));
+    }
 }
