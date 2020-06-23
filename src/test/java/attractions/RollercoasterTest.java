@@ -38,7 +38,20 @@ public class RollercoasterTest {
 
     @Test
     public void visitorCantRideRollercoaster(){
+        Visitor visitor = new Visitor(11, 1.2, 3.00);
+        assertEquals(false, rollerCoaster.isAllowedTo(visitor));
+    }
+
+    @Test
+    public void visitorIsRightAgeButTooShort(){
         Visitor visitor = new Visitor(14, 1.2, 3.00);
         assertEquals(false, rollerCoaster.isAllowedTo(visitor));
     }
+
+    @Test
+    public void visitorIsTooYoungButRightHeight(){
+        Visitor visitor = new Visitor(11, 1.5, 3.00);
+        assertEquals(false, rollerCoaster.isAllowedTo(visitor));
+    }
+
 }
